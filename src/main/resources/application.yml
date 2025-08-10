@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: FeedMe
+  datasource:
+    #    url: jdbc:postgresql://host.docker.internal:5432/feedme
+    #    url: jdbc:postgresql://postgres:5432/feedme
+    url: jdbc:postgresql://localhost:5432/feedme
+    username: user
+    password: pass
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true

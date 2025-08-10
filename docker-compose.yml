@@ -1,0 +1,19 @@
+services:
+  postgres:
+   container_name: feedme-db
+   image: postgres:alpine
+   ports:
+     - "5432:5432"
+   environment:
+     POSTGRES_USER: user
+     POSTGRES_PASSWORD: pass
+     POSTGRES_DB: feedme
+   volumes:
+    - pgdata:/var/lib/postgresql/data
+    - ./docker/db/init-scripts:/docker-entrypoint-initdb.d
+volumes:
+  pgdata:
+
+
+  # docker exec -it feedme-db bash
+  # psql -U user -d feedme

@@ -1,5 +1,7 @@
 package com.food.feedMe.product;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.food.feedMe.nutrition.Nutrition;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,21 +15,17 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name = "name_pl")
+    private String namePl;
 
-    @Column(name = "calories_per_100g")
-    private double calories;
-
-    @Column(name = "protein_per_100g")
-    private double protein;
-
-    @Column(name = "fat_per_100g")
-    private double fat;
-
-    @Column(name = "carbs_per_100g")
-    private double carbs;
+    @Column(name = "name_en")
+    private String nameEn;
 
     @Column(name = "price_per_100g")
     private double price;
+
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private Nutrition nutrition;
 
 }

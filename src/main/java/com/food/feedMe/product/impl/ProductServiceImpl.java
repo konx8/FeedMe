@@ -29,7 +29,7 @@ public class ProductServiceImpl  implements ProductService {
     }
 
     private Product findProductByName(String productName){
-        return productRepo.findByName(productName)
+        return productRepo.findByNamePl(productName)
                 .orElseThrow(() -> new ProductNotFoundException("Product" + productName + "not founded"));
     }
 

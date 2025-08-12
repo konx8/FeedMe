@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProductController {
 
-    private ProductService productService;
+    private final ProductService productService;
 
     @GetMapping
     public List<Product> getProducts() {
@@ -27,6 +27,7 @@ public class ProductController {
             @PathVariable("name") String name) {
         return ResponseEntity.ok(productService.getProductByName(name));
     }
+
 
 
 }
